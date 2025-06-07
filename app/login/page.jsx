@@ -1,14 +1,7 @@
-"use client";
-
-import { useState } from "react";
 import { Button, Input, Form } from "@heroui/react";
-import { Icon } from "@iconify/react";
+import PasswordInput from "@/components/passwordInput";
 
 export default function Login() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const toggleVisibility = () => setIsVisible(!isVisible);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -41,31 +34,7 @@ export default function Login() {
             type="name"
             variant="bordered"
           />
-
-          <Input
-            isRequired
-            endContent={
-              <button type="button" onClick={toggleVisibility}>
-                {isVisible ? (
-                  <Icon
-                    className="pointer-events-none text-2xl text-default-400"
-                    icon="solar:eye-closed-linear"
-                  />
-                ) : (
-                  <Icon
-                    className="pointer-events-none text-2xl text-default-400"
-                    icon="solar:eye-bold"
-                  />
-                )}
-              </button>
-            }
-            label="Password"
-            labelPlacement="outside"
-            name="password"
-            placeholder="Enter your password"
-            type={isVisible ? "text" : "password"}
-            variant="bordered"
-          />
+          <PasswordInput />
 
           <Button className="w-full mt-10" color="primary" type="submit">
             Log In
