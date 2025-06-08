@@ -2,14 +2,32 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Form } from "@heroui/form";
 
-export default function Login() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
+import { redirect } from "next/navigation";
+
+import { users } from "@/lib/localStorage";
+
+export default function Component() {
+  const handleSubmit = async (formData) => {
+    "use server";
     const name = formData.get("name");
     const password = formData.get("password");
-    console.log(name, password);
+    const userNames = users.map((user) => user.name);
+    const userPasswords = users.map((user) => user.password);
+    const loginName = userNames.find((userName) => userName === name);
+    const loginPassword = userPasswords.find(
+      (userPassword) => userPassword === password
+    );
+    if (!!loginName && !!loginPassword) {
+      const foundUser = users.find((user) => user.name === loginName);
+      console.log(foundUser);
+    } else {
+      console.log("user not found");
+    }
+    // console.log(loginName, loginPassword);
+    // redirect("/test");
   };
+  // const userName = users.map((user) => user.name);
+  // console.log(userName);
 
   return (
     <div className="flex h-full w-full items-center justify-center">
@@ -23,7 +41,7 @@ export default function Login() {
         <Form
           className="flex flex-col gap-4"
           validationBehavior="native"
-          // onSubmit={handleSubmit}
+          action={handleSubmit}
         >
           <Input
             isRequired
@@ -44,6 +62,7 @@ export default function Login() {
             type="password"
             variant="bordered"
           />
+
           <Button className="w-full mt-10" color="primary" type="submit">
             Log In
           </Button>
