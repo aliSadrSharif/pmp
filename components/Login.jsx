@@ -3,6 +3,7 @@ import { Input } from "@heroui/input";
 import { Form } from "@heroui/form";
 
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 import { users } from "@/lib/localStorage";
 
@@ -11,23 +12,14 @@ export default function Component() {
     "use server";
     const name = formData.get("name");
     const password = formData.get("password");
-    const userNames = users.map((user) => user.name);
-    const userPasswords = users.map((user) => user.password);
-    const loginName = userNames.find((userName) => userName === name);
-    const loginPassword = userPasswords.find(
-      (userPassword) => userPassword === password
-    );
-    if (!!loginName && !!loginPassword) {
-      const foundUser = users.find((user) => user.name === loginName);
-      console.log(foundUser);
+    const user = users.find((u) => u.name === name && u.password === password);
+    if (user) {
+      cookies().set("foundUser", JSON.stringify(user), { path: "/" });
+      redirect(`/dashboard/${user.name}?role:${user.role}`);
     } else {
-      console.log("user not found");
+      console.log("User not found");
     }
-    // console.log(loginName, loginPassword);
-    // redirect("/test");
   };
-  // const userName = users.map((user) => user.name);
-  // console.log(userName);
 
   return (
     <div className="flex h-full w-full items-center justify-center">
