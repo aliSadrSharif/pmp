@@ -12,14 +12,15 @@ export default async function Dashboard() {
   console.log("User on dashboard page:", user);
 
   return (
-    <div className="h-screen bg-gradient-to-tr from-blue-300 to-violet-300">
-      <div className="flex flex-col items-center gap-4">
-        <h1>Dashboard Page</h1>
-        {user ? (
-          <div>
-            <p>Welcome, {user.name}!</p>
-            <p>Your role: {user.role}</p>
-            <Form action={handleLogout}>
+    <main>
+      {user ? (
+        <div>
+          <div className="flex items-center mt-10 justify-between">
+            <p className="ml-10 font-bold">
+              <span className="text-orange-700">{user.name}</span> as{" "}
+              {user.role}
+            </p>
+            <Form action={handleLogout} className="mr-15">
               <Button
                 type="submit"
                 className="mt-4 px-4 py-2 bg-red-600 text-white rounded"
@@ -28,11 +29,11 @@ export default async function Dashboard() {
               </Button>
             </Form>
           </div>
-        ) : (
-          <p>No user data found.</p>
-        )}
-      </div>
-    </div>
+        </div>
+      ) : (
+        <p>No user data found.</p>
+      )}
+    </main>
   );
 }
 
