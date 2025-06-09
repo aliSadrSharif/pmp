@@ -1,7 +1,7 @@
+import Sidebar from "@/components/Sidebar";
+import { handleLogout } from "@/lib/handleLogout";
 import { Button } from "@heroui/button";
-import { Form } from "@heroui/form";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export default async function Dashboard() {
   const cookieStore = await cookies();
@@ -12,33 +12,30 @@ export default async function Dashboard() {
   console.log("User on dashboard page:", user);
 
   return (
-    <main>
+    <div>
       {user ? (
-        <div>
-          <div className="flex items-center mt-10 justify-between">
-            <p className="ml-10 font-bold">
-              <span className="text-orange-700">{user.name}</span> as{" "}
+        <div className="flex items-start">
+          <div className="flex items-center justify-between mt-10 w-9/12">
+            <p className="font-bold ml-10">
+              <span className="text-orange-800">{user.name}</span> as{" "}
               {user.role}
             </p>
-            <Form action={handleLogout} className="mr-15">
+            <form action={handleLogout} className="mr-15">
               <Button
                 type="submit"
                 className="mt-4 px-4 py-2 bg-red-600 text-white rounded"
               >
                 Logout
               </Button>
-            </Form>
+            </form>
+          </div>
+          <div className="h-screen bg-indigo-500 w-3/12">
+            <Sidebar />
           </div>
         </div>
       ) : (
         <p>No user data found.</p>
       )}
-    </main>
+    </div>
   );
-}
-
-export async function handleLogout() {
-  "use server";
-  cookies().delete("foundUser");
-  redirect("/");
 }
