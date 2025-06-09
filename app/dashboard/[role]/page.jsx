@@ -1,15 +1,14 @@
+"use client";
+
 import Sidebar from "@/components/Sidebar";
 import { handleLogout } from "@/lib/handleLogout";
 import { Button } from "@heroui/button";
-import { cookies } from "next/headers";
+import { useUserFromCookie } from "@/lib/useUserFromCookie";
 
-export default async function Dashboard() {
-  const cookieStore = await cookies();
-  const foundUser = cookieStore.get("foundUser")?.value;
+export default function Dashboard() {
+  const user = useUserFromCookie();
 
-  const user = foundUser ? JSON.parse(foundUser) : null;
-
-  console.log("User on dashboard page:", user);
+  console.log(user);
 
   return (
     <div>
@@ -29,7 +28,7 @@ export default async function Dashboard() {
               </Button>
             </form>
           </div>
-          <div className="h-screen bg-indigo-500 w-3/12">
+          <div className="h-screen bg-indigo-500 w-3/12 flex grow-0">
             <Sidebar />
           </div>
         </div>
