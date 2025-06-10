@@ -3,11 +3,18 @@ import React from "react";
 
 function MainTaskbar() {
   return (
-    <div className="flex gap-2 mx-10 h-10/12">
-      <div className="w-full bg-amber-400 flex flex-col rounded-2xl h-[70vh]">
+    <div className="flex gap-2 h-10/12 ml-10 w-full">
+      <div className="max-w-10/12 w-full bg-amber-400 flex flex-col rounded-2xl h-[70vh]">
         <div className="flex bg-red-500 max-w-full h-[16%] rounded-t-2xl items-center px-4 overflow-x-auto justify-start gap-4">
-          <Button className=" bg-green-300 font-bold py-7 border-1 border-black rounded-t-xl focus:bg-green-500 min-w-14">
+          <Button className=" bg-green-300 font-bold max-h-13 h-13 mb-[-7px] border-1 border-black rounded-t-2xl focus:bg-green-500 min-w-14">
             Tab 1
+          </Button>
+          <Button
+            className=" bg-amber-700 w-10 h-10 rounded-full font-bold text-xl mt-3 shadow-2xl grow-0 shrink-0 md:hidden"
+            isIconOnly
+            radius="full"
+          >
+            <span className="mt-[-5px]">+</span>
           </Button>
         </div>
         <div className="bg-blue-500 w-full h-1/12 mt-5 flex justify-between items-center overflow-x-auto shrink-0">
@@ -27,9 +34,13 @@ function MainTaskbar() {
           </div>
         </div>
       </div>
-      <button className=" bg-amber-700 w-8 h-8 rounded-full font-bold text-xl mt-3 pb-4 shadow-2xl grow-0 shrink-0">
-        +
-      </button>
+      <Button
+        className=" bg-amber-700 w-10 h-10 rounded-full font-bold text-xl mt-3 shadow-2xl grow-0 shrink-0 max-md:hidden"
+        isIconOnly
+        radius="full"
+      >
+        <span className="mt-[-5px]">+</span>
+      </Button>
     </div>
   );
 }
