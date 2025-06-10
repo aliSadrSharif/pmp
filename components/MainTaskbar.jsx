@@ -1,3 +1,5 @@
+import { Progress } from "@heroui/react";
+import { DatePicker } from "@heroui/react";
 import { Button } from "@heroui/button";
 import React from "react";
 
@@ -26,7 +28,25 @@ function MainTaskbar() {
           <span className="font-bold text-sm pr-4">Reporter</span>
         </div>
         <div className="bg-black mt-2 h-full flex flex-col items-center overflow-y-auto">
-          <div className="bg-gray-400 w-full h-[13%] mt-2 flex justify-between items-center overflow-x-auto shrink-0"></div>
+          <div className="bg-gray-400 w-full h-[13%] mt-2 flex justify-between items-center overflow-x-auto shrink-0 px-3">
+            <div>title 1</div>
+            <div>des 1</div>
+            <div>assign 1</div>
+            <div>
+              <Progress
+                aria-label="Downloading..."
+                className="max-w-md"
+                color="success"
+                showValueLabel={true}
+                size="md"
+                value={80}
+              />
+            </div>
+            <div>
+              <DatePicker className="max-w-[284px]" />
+            </div>
+            <div>Sobhan</div>
+          </div>
           <div className="h-10 mb-10">
             <Button className="mt-4 mx-3 font-bold h-10 flex ">
               + Add new task
