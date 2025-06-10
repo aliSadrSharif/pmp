@@ -15,7 +15,7 @@ export default function Dashboard() {
     <div>
       {user ? (
         <div className="flex items-start">
-          <div className="flex flex-col mt-10 w-full">
+          <div className="flex flex-col mt-10 w-10/12 max-sm:w-full">
             <div className="flex items-center justify-between w-full">
               <p className="font-bold ml-10">
                 <span className="text-orange-800">{user.name}</span> as{" "}
@@ -34,7 +34,7 @@ export default function Dashboard() {
               <MainTaskbar />
             </div>
           </div>
-          <div className="h-screen bg-indigo-500 w-3/12 flex shrink-0 max-w-[15rem] border-l-2 border-l-black shadow-xl">
+          <div className="h-screen bg-indigo-500 w-2/12 flex shrink-0  border-l-2 border-l-black shadow-xl min-w-[13rem] max-sm:hidden">
             <Sidebar />
           </div>
         </div>
