@@ -34,7 +34,7 @@ export default function Dashboard() {
               <MainTaskbar />
             </div>
           </div>
-          <div className="h-screen bg-indigo-500 w-3/12 flex shrink-0 max-w-[15rem]">
+          <div className="h-screen bg-indigo-500 w-3/12 flex shrink-0 max-w-[15rem] border-l-2 border-l-black shadow-xl">
             <Sidebar />
           </div>
         </div>
