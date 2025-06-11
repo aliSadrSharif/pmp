@@ -7,7 +7,7 @@ function MainTaskbar({ userRole }) {
   return (
     <Card
       shadow="md"
-      className="bg-neutral-600/20 flex gap-2 h-10/12 w-full border backdrop-blur-[1px] border-neutral-400/20"
+      className="bg-neutral-600/20 flex gap-2 h-10/12 w-full border backdrop-blur-[1px] border-neutral-400/20 shadow-2xl"
     >
       <div className=" w-full  max-md:flex-row flex flex-col rounded-2xl h-[70vh] max-md:w-full">
         <div className="flex max-w-full h-[16%] rounded-t-2xl items-center px-4 overflow-x-auto max-md:flex-col max-md:h-full max-md:min-w-[16%] max-md:px-0 justify-start gap-4">

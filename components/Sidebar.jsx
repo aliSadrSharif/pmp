@@ -10,7 +10,7 @@ function Sidebar({ userRole }) {
       </Button>
       <Button
         color="secondary"
-        className={`border-1 mt-4 mb-4 min-h-10 ${
+        className={`border-1 mt-4 mb-4 min-h-10 border-none ${
           userRole === "viewer" ? "hidden" : ""
         }`}
       >
