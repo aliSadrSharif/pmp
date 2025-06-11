@@ -23,7 +23,7 @@ export default function Component() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="flex w-full max-w-sm flex-col gap-4 rounded-large px-8 pb-10 pt-6 border-2 border-dashed border-purple-700 mt-25">
+      <div className="flex w-full bg-neutral-600/10 border-neutral-400/20 max-w-sm flex-col gap-4 shadow-2xl rounded-large px-8 pb-10 pt-6 border mt-25">
         <p className="pb-4 text-left text-3xl font-semibold">
           Log In
           <span aria-label="emoji" className="ml-2" role="img">

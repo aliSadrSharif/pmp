@@ -6,6 +6,7 @@ import { Button } from "@heroui/button";
 import { useUserFromCookie } from "@/lib/useUserFromCookie";
 import MainTaskbar from "@/components/MainTaskbar";
 import {
+  Card,
   Form,
   Navbar,
   NavbarMenu,
@@ -26,13 +27,13 @@ export default function Dashboard() {
             <Navbar isBlurred={false} className="bg-transparent h-[8vh]">
               <div className="flex items-center justify-between w-full">
                 <p className="font-bold ml-10">
-                  <span className="text-orange-800">{user.name}</span> as{" "}
+                  <span className="text-blue-700">{user.name}</span> as{" "}
                   {user.role}
                 </p>
                 <Form action={handleLogout} className="mr-15 mt-[-13px]">
                   <Button
                     type="submit"
-                    className="mt-4 px-4 py-2 bg-red-600 text-white rounded max-md:hidden"
+                    className="text-red-800 font-bold bg-gradient-to-tr from-pink-500 to-yellow-500 shadow-lg max-md:hidden"
                   >
                     Logout
                   </Button>
@@ -47,7 +48,7 @@ export default function Dashboard() {
                     <Button
                       type="submit"
                       fullWidth
-                      className="bg-red-600 text-white font-bold"
+                      className="text-red-800 font-bold bg-gradient-to-tr from-pink-500 to-yellow-500 shadow-lg"
                     >
                       Logout
                     </Button>
@@ -58,13 +59,17 @@ export default function Dashboard() {
                 </NavbarMenuItem>
               </NavbarMenu>
             </Navbar>
-            <div className="w-full bg-pink-400 mt-10 h-[calc(100vh-136px)]">
+            <div className="ml-3 w-full mt-10 h-[calc(100vh-136px)]">
               <MainTaskbar userRole={user.role} />
             </div>
           </div>
-          <div className="h-screen bg-indigo-500 w-2/12 flex shrink-0  border-l-2 border-l-black shadow-xl min-w-[13rem] max-md:hidden">
+          <Card
+            isBlurred
+            shadow="sm"
+            className="h-screen w-2/12 flex shrink-0 bg-neutral-600/20 border-l-1 border-neutral-400/20 shadow-xl min-w-[13rem] max-md:hidden ml-6"
+          >
             <Sidebar userRole={user.role} />
-          </div>
+          </Card>
         </div>
       ) : (
         <p>No user data found.</p>
