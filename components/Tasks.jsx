@@ -5,29 +5,32 @@ import React from "react";
 
 function Tasks() {
   return (
-    <Form className="bg-gray-400 w-full h-[13%] mt-2 flex flex-row justify-between items-center overflow-x-auto shrink-0 px-1">
+    <Form className="bg-gray-400 w-full h-[20%] mt-2 flex flex-row justify-around items-center overflow-x-auto shrink-0 max-md:flex-col max-md:h-full max-md:mt-0 max-md:w-6/12">
       <div>
         <Textarea
+          aria-label
           color="primary"
           placeholder="title"
           type="text"
           disableAutosize
           variant="faded"
-          className="max-w-20 max-h-11 overflow-y-auto"
+          className="max-w-20 w-20 max-h-11 overflow-y-auto"
         />
       </div>
-      <div className="">
+      <div>
         <Textarea
+          aria-label
           color="primary"
           placeholder="description"
           type="text"
           disableAutosize
           variant="faded"
-          className="max-w-90 max-h-11 overflow-y-auto"
+          className="max-w-90 w-90 max-h-11 overflow-y-auto max-md:max-w-30"
         />
       </div>
       <div className="h-10">
         <Select
+          aria-label
           className="w-30"
           size="md"
           placeholder="Assign"
@@ -41,6 +44,7 @@ function Tasks() {
       </div>
       <div className="h-10">
         <Select
+          aria-label
           className="w-31"
           size="md"
           placeholder="Status"
@@ -55,6 +59,7 @@ function Tasks() {
       </div>
       <div>
         <DatePicker
+          aria-label
           color="primary"
           variant="faded"
           size="sm"
@@ -64,6 +69,7 @@ function Tasks() {
       </div>
       <div className="h-10">
         <Select
+          aria-label
           className="w-30"
           size="md"
           placeholder="Reporter"
