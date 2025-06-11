@@ -7,7 +7,6 @@ import { useUserFromCookie } from "@/lib/useUserFromCookie";
 import MainTaskbar from "@/components/MainTaskbar";
 import {
   Form,
-  Link,
   Navbar,
   NavbarMenu,
   NavbarMenuItem,
@@ -55,16 +54,16 @@ export default function Dashboard() {
                   </Form>
                 </NavbarMenuItem>
                 <NavbarMenuItem className="mb-4">
-                  <Sidebar />
+                  <Sidebar userRole={user.role} />
                 </NavbarMenuItem>
               </NavbarMenu>
             </Navbar>
             <div className="w-full bg-pink-400 mt-10 h-[calc(100vh-136px)]">
-              <MainTaskbar />
+              <MainTaskbar userRole={user.role} />
             </div>
           </div>
           <div className="h-screen bg-indigo-500 w-2/12 flex shrink-0  border-l-2 border-l-black shadow-xl min-w-[13rem] max-md:hidden">
-            <Sidebar />
+            <Sidebar userRole={user.role} />
           </div>
         </div>
       ) : (
