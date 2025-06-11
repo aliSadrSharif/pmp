@@ -1,22 +1,57 @@
-import { Progress } from "@heroui/react";
+import { users } from "@/lib/localStorage";
+import { Form, Select, SelectItem, Textarea } from "@heroui/react";
 import { DatePicker } from "@heroui/react";
-import { Button } from "@heroui/button";
 import React from "react";
 
 function Tasks() {
   return (
-    <div className="bg-gray-400 w-full h-[13%] mt-2 flex justify-between items-center overflow-x-auto shrink-0 px-4">
-      <div>title 1</div>
-      <div className="max-w-30 overflow-y-auto">description 1</div>
-      <div>ali sharif</div>
-      <div className="w-15">
-        <Progress
-          className="max-w-md"
+    <Form className="bg-gray-400 w-full h-[13%] mt-2 flex flex-row justify-between items-center overflow-x-auto shrink-0 px-1">
+      <div>
+        <Textarea
           color="primary"
-          showValueLabel={true}
-          size="sm"
-          value={50}
+          placeholder="title"
+          type="text"
+          disableAutosize
+          variant="faded"
+          className="max-w-20 max-h-11 overflow-y-auto"
         />
+      </div>
+      <div className="">
+        <Textarea
+          color="primary"
+          placeholder="description"
+          type="text"
+          disableAutosize
+          variant="faded"
+          className="max-w-90 max-h-11 overflow-y-auto"
+        />
+      </div>
+      <div className="h-10">
+        <Select
+          className="w-30"
+          size="md"
+          placeholder="Assign"
+          variant="faded"
+          color="primary"
+        >
+          {users.map((user) => (
+            <SelectItem key={user.id}>{user.name}</SelectItem>
+          ))}
+        </Select>
+      </div>
+      <div className="h-10">
+        <Select
+          className="w-31"
+          size="md"
+          placeholder="Status"
+          variant="faded"
+          color="primary"
+        >
+          <SelectItem>draft</SelectItem>
+          <SelectItem>in progress</SelectItem>
+          <SelectItem>succes</SelectItem>
+          <SelectItem>failed</SelectItem>
+        </Select>
       </div>
       <div>
         <DatePicker
@@ -24,11 +59,23 @@ function Tasks() {
           variant="faded"
           size="sm"
           radius="full"
-          className="max-w-[130px] "
+          className="max-w-[130px]"
         />
       </div>
-      <div>Sobhan</div>
-    </div>
+      <div className="h-10">
+        <Select
+          className="w-30"
+          size="md"
+          placeholder="Reporter"
+          variant="faded"
+          color="primary"
+        >
+          {users.map((user) => (
+            <SelectItem key={user.id}>{user.name}</SelectItem>
+          ))}
+        </Select>
+      </div>
+    </Form>
   );
 }
 
